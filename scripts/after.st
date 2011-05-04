@@ -1,5 +1,5 @@
 "Clear Author"
-Author reset.
+"Author reset."
 !
 "Clear Monticello Caches"
 MCCacheRepository instVarNamed: 'default' put: nil.
@@ -17,7 +17,7 @@ Smalltalk allClassesAndTraitsDo: [ :each |
 "Cleanup System Memory"
 Smalltalk garbageCollect.
 Symbol compactSymbolTable.
-Deprecation raiseWarning: true.
+"Deprecation raiseWarning: true."
 !
 "Save and Quit"
 WorldState addDeferredUIMessage: [
