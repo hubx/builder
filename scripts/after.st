@@ -1,5 +1,11 @@
 "Clear Author"
 "Author reset."
+"Unload Build Tools"
+[ Gofer new
+	package: 'HudsonBuildTools';
+	unload ]
+		on: Error
+		do: [ :err | "package not present" ].
 !
 "Clear Monticello Caches"
 MCCacheRepository instVarNamed: 'default' put: nil.
@@ -15,6 +21,7 @@ Smalltalk allClassesAndTraitsDo: [ :each |
 	each class organization removeEmptyCategories; sortCategories ].
 !
 "Cleanup System Memory"
+"Author reset."
 Smalltalk garbageCollect.
 Symbol compactSymbolTable.
 "Deprecation raiseWarning: true."
