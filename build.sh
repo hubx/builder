@@ -8,8 +8,8 @@
 #
 
 # vm configuration
-PHARO_VM="~/hpi/swt/SWT-2011-Squeaksource.app/Contents/Linux-i686/bin/squeak"
-PHARO_PARAM=""
+PHARO_VM="~/SWT-2011-Squeaksource.app/Contents/Linux-i686/bin/squeak"
+PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration
 BASE_PATH="$(cd "$(dirname "$0")" && pwd)"
@@ -22,30 +22,30 @@ VM_PATH="$BASE_PATH/oneclick/Contents"
 BUILD_CACHE="$BASE_PATH/cache"
 
 # vm configuration
-case "$(uname -s)" in
-	"Linux")
-		if [ -f "$(which cog)" ] ; then
-			PHARO_VM="$(which cog)"
-		elif [ -f "$(which squeak)" ] ; then
-			PHARO_VM="$(which squeak)"
-		else
-			PHARO_VM="$VM_PATH/Linux/squeak"
-		fi
-		PHARO_PARAM="-nodisplay -nosound"
-		;;
-	"Darwin")
-		PHARO_VM="$VM_PATH/MacOS/Squeak VM Opt"
-		PHARO_PARAM="-headless"
-		;;
-	"Cygwin")
-		PHARO_VM="$VM_PATH/Windows/Squeak.exe"
-		PHARO_PARAM="-headless"
-		;;
-	*)
-		echo "$(basename $0): unknown platform $(uname -s)"
-		exit 1
-		;;
-esac
+#case "$(uname -s)" in
+#	"Linux")
+#		if [ -f "$(which cog)" ] ; then
+#			PHARO_VM="$(which cog)"
+#		elif [ -f "$(which squeak)" ] ; then
+#			PHARO_VM="$(which squeak)"
+#		else
+#			PHARO_VM="$VM_PATH/Linux/squeak"
+#		fi
+#		PHARO_PARAM="-nodisplay -nosound"
+#		;;
+#	"Darwin")
+#		PHARO_VM="$VM_PATH/MacOS/Squeak VM Opt"
+#		PHARO_PARAM="-headless"
+#		;;
+#	"Cygwin")
+#		PHARO_VM="$VM_PATH/Windows/Squeak.exe"
+#		PHARO_PARAM="-headless"
+#		;;
+#	*)
+#		echo "$(basename $0): unknown platform $(uname -s)"
+#		exit 1
+#		;;
+#esac
 
 # build configuration
 SCRIPTS=("$SCRIPTS_PATH/before.st" "$SCRIPTS_PATH/HudsonBuildTools.st")
