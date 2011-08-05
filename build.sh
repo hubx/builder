@@ -187,6 +187,7 @@ rm -rf "$OUTPUT_CACHE" "$OUTPUT_ZIP"
 	[ -d "files" ] && zip -qr "$OUTPUT_ZIP" "files"
 )
 
+echo $version
 exec test-sum.sh $OUTPUT_PATH 2> /dev/null
 
 # success
