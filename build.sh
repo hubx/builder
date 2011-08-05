@@ -8,8 +8,8 @@
 #
 
 # vm configuration
-PHARO_VM="cog"
-PHARO_PARAM="-nodisplay -nosound"
+PHARO_VM="~/hpi/swt/SWT-2011-Squeaksource.app/Contents/Linux-i686/bin/squeak"
+PHARO_PARAM=""
 
 # directory configuration
 BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
@@ -20,7 +20,7 @@ SOURCES_PATH="$(readlink -f $(dirname $0))/sources"
 BUILD_CACHE="$(readlink -f $(dirname $0))/cache"
 
 # build configuration
-SCRIPTS=("$SCRIPTS_PATH/before.st")
+SCRIPTS=("$SCRIPTS_PATH/before.st" "$SCRIPTS_PATH/HudsonBuildTools.st")
 
 # help function
 function display_help() {
@@ -141,6 +141,8 @@ fi
 # remove cache link
 rm -f "$OUTPUT_CACHE"
 rm -f "$OUTPUT_PATH/*.sources"
+
+exec test-sum.sh $OUTPUT_PATH 2> /dev/null
 
 # success
 exit 0
