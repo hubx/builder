@@ -9,7 +9,7 @@
 
 # vm configuration
 PHARO_VM="~/SWT-2011-Squeaksource.app/Contents/Linux-i686/bin/squeak"
-PHARO_PARAM="-nodisplay -nosound"
+PHARO_PARAM="-nosound -nodisplay"
 
 # directory configuration
 BASE_PATH="$(cd "$(dirname "$0")" && pwd)"
@@ -48,7 +48,7 @@ BUILD_CACHE="$BASE_PATH/cache"
 #esac
 
 # build configuration
-SCRIPTS=("$SCRIPTS_PATH/before.st" "$SCRIPTS_PATH/HudsonBuildTools.st")
+SCRIPTS=("$SCRIPTS_PATH/before.st")
 
 # help function
 function display_help() {
@@ -186,9 +186,9 @@ rm -rf "$OUTPUT_CACHE" "$OUTPUT_ZIP"
 	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
 	[ -d "files" ] && zip -qr "$OUTPUT_ZIP" "files"
 )
-
+echo "SqueakSource metainformation:"
 echo $version
-exec test-sum.sh $OUTPUT_PATH 2> /dev/null
+sh $(dirname "$0")/tests-sum.sh $OUTPUT_PATH 2> /dev/null
 
 # success
 exit 0
