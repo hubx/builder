@@ -186,8 +186,7 @@ rm -rf "$OUTPUT_CACHE" "$OUTPUT_ZIP"
 	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
 	[ -d "files" ] && zip -qr "$OUTPUT_ZIP" "files"
 )
-echo "SqueakSource metainformation:"
-echo $version
+echo "SqueakSource-Version:$version"
 sh $(dirname "$0")/tests-sum.sh $OUTPUT_PATH 2> /dev/null
 
 # success

@@ -6,4 +6,4 @@ FAILURES=$(grep "testsuite" $1/*-Test.xml | sed -e "s/^.*failures=\"//" | cut -d
 TOTALSUM=$(echo $TOTAL 0 | tr " " "+" | bc)
 FAILURESSUM=$(echo $FAILURES 0 | tr " " "+" | bc)
 
-echo $FAILURESSUM/$TOTALSUM
+echo "SqueakSource-Tests:$FAILURESSUM/$TOTALSUM"
